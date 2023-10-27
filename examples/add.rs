@@ -14,6 +14,8 @@ fn cuda(device: &Device) -> Program {
 fn opencl(device: &Device) -> Program {
     let opencl_kernel = include_str!("./add.cl");
     let opencl_device = device.opencl_device().unwrap();
+
+
     let opencl_program = opencl::Program::from_opencl(opencl_device, opencl_kernel).unwrap();
     Program::Opencl(opencl_program)
 }
